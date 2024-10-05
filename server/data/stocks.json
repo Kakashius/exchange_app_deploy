@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "abbr": "AAPL",
+    "name": "Apple, Inc.",
+    "checked": true
+  },
+  {
+    "id": 1,
+    "abbr": "SBUX",
+    "name": "Starbucks, Inc.",
+    "checked": false
+  },
+  {
+    "id": 2,
+    "abbr": "MSFT",
+    "name": "Microsoft, Inc.",
+    "checked": true
+  },
+  {
+    "id": 3,
+    "abbr": "CSCO",
+    "name": "Cisco Systems, Inc.",
+    "checked": true
+  },
+  {
+    "id": 4,
+    "abbr": "QCOM",
+    "name": "QUALCOMM Incorporated",
+    "checked": true
+  },
+  {
+    "id": 5,
+    "abbr": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "checked": true
+  },
+  {
+    "id": 6,
+    "abbr": "TSLA",
+    "name": "Tesla, Inc.",
+    "checked": true
+  },
+  {
+    "id": 7,
+    "abbr": "AMD",
+    "name": "Advanced Micro Devices, Inc.",
+    "checked": true
+  }
+]
