@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+    -  "4000:4000"
+    networks:
+    -  app-network
+
+  user-client:
+    build:
+      context: ./client/user
+      dockerfile: Dockerfile
+    ports:
+    -  "3000:3000"
+    networks:
+    -  app-network
+
+  admin-client:
+    build:
+      context: ./client/admin
+      dockerfile: Dockerfile
+    ports:
+    -  "5137:5173"
+    networks:
+    -  app-network
+
+networks:
+  app-network:  # Сеть контейнеров
+
+# Запуск
+# docker-compose up --build
+
