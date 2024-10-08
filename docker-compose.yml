@@ -1,36 +1,45 @@
-version: "3.8"
+version: "3.9"
 
 services:
   server:
     build:
       context: ./server
       dockerfile: Dockerfile
+    container_name: server-container
     ports:
-    -  "4000:4000"
+      -  "4000:4000"
     networks:
-    -  app-network
+      -  app-network
 
   user-client:
     build:
       context: ./client/user
       dockerfile: Dockerfile
+    container_name: user-container
+    depends_on:
+      -  server
     ports:
-    -  "3000:3000"
+      -  "3000:3000"
     networks:
-    -  app-network
+      -  app-network
 
   admin-client:
     build:
       context: ./client/admin
       dockerfile: Dockerfile
+    container_name: admin-container
+    depends_on:
+      -  server
+    env_file: ./client/admin/.env
     ports:
-    -  "5137:5173"
+      -  "5137:5173"
     networks:
-    -  app-network
+      -  app-network
 
 networks:
   app-network:  # Сеть контейнеров
+    driver: bridge
 
 # Запуск
-# docker-compose up --build
+# docker-compose up -d
 
