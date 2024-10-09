@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 export const socketConnect = () => {
-	const URL = 'http://localhost:4000';
+	const URL = 'http://server-container:4000';
 	const socket = io(URL, { autoConnect: false });
 
 	// socket.onAny((event, ...args) => {
