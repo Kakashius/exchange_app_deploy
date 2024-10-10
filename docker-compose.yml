@@ -19,7 +19,7 @@ services:
     depends_on:
       -  server
     ports:
-      -  "3000:3000"
+      -  "5173:5173"
     networks:
       -  app-network
 
@@ -32,7 +32,7 @@ services:
       -  server
     env_file: ./client/admin/.env
     ports:
-      -  "5137:5137"
+      -  "3000:3000"
     networks:
       -  app-network
 

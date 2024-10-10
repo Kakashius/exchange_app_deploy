@@ -4,6 +4,6 @@ COPY . /app
 WORKDIR /app
 RUN ["npm", "install"]
 
-EXPOSE 5137
+EXPOSE 3000
 
 CMD ["npm","start"]
