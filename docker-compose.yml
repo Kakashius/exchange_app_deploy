@@ -32,7 +32,7 @@ services:
       -  server
     env_file: ./client/admin/.env
     ports:
-      -  "5137:5173"
+      -  "5137:5137"
     networks:
       -  app-network
 
@@ -44,7 +44,9 @@ services:
       -  admin-client
       -  user-client
     volumes:
-      -  ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Привязка конфига к контейнеру
+      -  ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Привязка конфига к контейнеру
+      -  ./client/admin/public:/var/www/html/admin:ro
+      -  ./client/user/public:/var/www/html/user:ro
     ports:
       -  "80:80"
     networks:
