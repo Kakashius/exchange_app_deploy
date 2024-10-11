@@ -6,22 +6,24 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	base: '/user/',  // Добавляем базовый путь /user
 	plugins: [vue(), vueJsx()],
 	resolve: {
-		alias: {
-			'@': fileURLToPath(new URL('./src', import.meta.url)),
-			'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.js',
-			'balm-ui-css': 'balm-ui/dist/balm-ui.css',
-		},
+	  alias: {
+		'@': fileURLToPath(new URL('./src', import.meta.url)),
+		'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.js',
+		'balm-ui-css': 'balm-ui/dist/balm-ui.css',
+	  },
 	},
 	server: {
-		host: true,
-		proxy: {
-			'/api': {
-				target: 'http://server-container:4000',
-				changeOrigin: true,
-				secure: false,
-			},
+	  host: true,
+	  proxy: {
+		'/api': {
+		  target: 'http://server-container:4000',
+		  changeOrigin: true,
+		  rewrite: (path) => path.replace(/^\/user\/api/, '/api'),
+		  secure: false,
 		},
+	  },
 	},
-});
+  });
