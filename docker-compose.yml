@@ -46,25 +46,25 @@ services:
     volumes:
       -  ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Привязка конфига к контейнеру
       -  etc-letsencrypt:/etc/letsencrypt
-      -  www-cerbot:/var/www/cerbot
+      -  www-certbot:/var/www/certbot
     ports:
       -  "80:80"
-      -	 "443:443"
+      -  "443:443"
     networks:
       -  app-network
 
-  cerbot:
-    image: cerbot/cerbot
-    container-name: cerbot
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
     depends_on:
       -  nginx
     volumes:
       -  etc-letsencrypt:/etc/letsencrypt
-      -  www-cerbot:/var/www/cerbot
-    command: certonly --webroot --webroot-path=/var/www/cerbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchangeapp-prj.com
+      -  www-certbot:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchangeapp-prj.com.website.yandexcloud.net
 
-volumes:	# Общие тома для nginx и cerbot
-  www-cerbot:
+volumes:	# Общие тома для nginx и certbot
+  www-certbot:
   etc-letsencrypt:
 
 networks:
