@@ -45,14 +45,31 @@ services:
       -  user-client
     volumes:
       -  ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Привязка конфига к контейнеру
+      -  etc-letsencrypt:/etc/letsencrypt
+      -  www-cerbot:/var/www/cerbot
     ports:
       -  "80:80"
+      -	 "443:443"
     networks:
       -  app-network
 
+  cerbot:
+    image: cerbot/cerbot
+    container-name: cerbot
+    depends_on:
+      -  nginx
+    volumes:
+      -  etc-letsencrypt:/etc/letsencrypt
+      -  www-cerbot:/var/www/cerbot
+    command: certonly --webroot --webroot-path=/var/www/cerbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchangeapp-prj.com
+
+volumes:	# Общие тома для nginx и cerbot
+  www-cerbot:
+  etc-letsencrypt:
+
 networks:
   app-network:  # Сеть контейнеров
-    driver: bridge
+    driver: bridge    
 
 # Запуск
 # docker-compose up -d
