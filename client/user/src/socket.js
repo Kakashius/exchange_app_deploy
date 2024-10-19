@@ -11,7 +11,6 @@ export const socketConnect = () => {
 	socket.on('connect_error', (err) => {
 		console.error('Error while creating a socket connection:', err);
 	});
-
 	socket.connect();
 	return socket;
 };

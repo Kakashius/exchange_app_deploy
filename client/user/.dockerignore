@@ -1,0 +1,10 @@
+*
+!public
+!src
+!tests
+!.eslintrc.cjs
+!index.html
+!package.json
+!package-lock.json
+!vite.config.js
+!webdriver.cmd
