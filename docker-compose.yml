@@ -39,6 +39,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx-container
+    restart: unless-stopped
     depends_on:
       -  server
       -  admin-client
@@ -61,7 +62,7 @@ services:
     volumes:
       -  etc-letsencrypt:/etc/letsencrypt
       -  www-certbot:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchangeapp-prj.com.website.yandexcloud.net
+    command: certonly --webroot --webroot-path=/var/www/certbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchange-app-prj.ru
 
 volumes:	# Общие тома для nginx и certbot
   www-certbot:
