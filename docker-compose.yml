@@ -62,7 +62,7 @@ services:
     volumes:
       -  etc-letsencrypt:/etc/letsencrypt
       -  www-certbot:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchange-app-prj.ru
+    command: certonly --webroot --webroot-path=/var/www/certbot --keep-until-expiring --email nakadashi@mail.ru --agree-tos --no-eff-email -d exchange-app-prj.ru
 
 volumes:	# Общие тома для nginx и certbot
   www-certbot:
