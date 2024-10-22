@@ -1,8 +1,11 @@
 import { io } from 'socket.io-client';
 
 export const socketConnect = () => {
-	const URL = 'http://localhost:4000';
-	const socket = io(URL, { autoConnect: false });
+	const URL = 'https://exchange-app-prj.ru';
+	const socket = io(URL, {
+		secure: true,
+		transports: ['websocket', 'polling'],
+	  });
 	socket.on('connect_error', (err) => {
 		console.error('Error while creating a socket connection:', err);
 	});
