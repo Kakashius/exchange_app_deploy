@@ -5,35 +5,38 @@ import { StocksList } from './components/StocksList';
 import { TradeTab } from './components/TradeTab';
 import { Tabs } from './components/Tabs';
 
-export const Router = createBrowserRouter([
-	{
+export const Router = createBrowserRouter(
+	[
+	  {
 		path: '/brokers',
 		element: (
-			<Tabs>
-				<BrokersList />
-			</Tabs>
+		  <Tabs>
+			<BrokersList />
+		  </Tabs>
 		),
-	},
-	{
+	  },
+	  {
 		path: '/stocks',
 		element: (
-			<Tabs>
-				<StocksList />
-			</Tabs>
+		  <Tabs>
+			<StocksList />
+		  </Tabs>
 		),
-	},
-	{
+	  },
+	  {
 		path: '/trade',
 		element: (
-			<Tabs>
-				<TradeTab />
-			</Tabs>
+		  <Tabs>
+			<TradeTab />
+		  </Tabs>
 		),
-	},
-	{
+	  },
+	  {
 		path: '/',
 		element: <></>,
 		loader: () => redirect('/trade'),
 		errorElement: <NotFound />,
-	},
-]);
+	  },
+	],
+	{ basename: '/admin' }  // Указываем префикс для админской части
+  );
